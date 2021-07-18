@@ -1,0 +1,76 @@
+@mixin font-face($font-family, $url, $weight) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('../fonts/#{$url}.woff2') format('woff2'),
+    url('../fonts/#{$url}.woff') format('woff');
+    font-weight: #{$weight};
+    font-display: swap;
+    font-style: normal;
+  }
+}
+
+@mixin object-fit($fit: fill, $position: null) {
+  -o-object-fit: $fit;
+  object-fit: $fit;
+
+  @if $position {
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  }
+
+  @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+
+/* ====== line-clump ====== */
+@mixin line-clamp($maxLines:2, $fgCol:#000, $bgCol:#fff, $lineHeight:$line-height) {
+  position: relative;
+  overflow: hidden;
+
+  .webkit-line-clamp & {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $maxLines;
+  }
+
+  html:not(.webkit-line-clamp) & {
+    max-height: $maxLines * $lineHeight * 1em;
+
+    &:before {
+      top: ($maxLines - 1) * $lineHeight * 1em;
+      @extend %line-clamp-ellipsis;
+      color: $fgCol;
+    }
+
+    &:after {
+      @extend %line-clamp-filler;
+      background-color: $bgCol;
+    }
+  }
+}
+
+%line-clamp-ellipsis {
+  min-width: 30px;
+  content: "\2026";
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+}
+
+%line-clamp-filler {
+  $whitespace: "";
+
+  @for $i from 1 through 1024 {
+    $whitespace: $whitespace + "  ";
+  }
+
+  content: $whitespace;
+  display: inline;
+  letter-spacing: 1em;
+  position: relative;
+  z-index: 1;
+  font-size: 75%;
+};

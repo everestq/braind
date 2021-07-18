@@ -1,0 +1,14 @@
+block variables
+
+doctype html
+html(lang="ru")
+  head
+    include ../modules/head
+  body 
+    .wrapper 
+      include ../modules/header
+      .content
+        block content 
+      include ../modules/footer
+    script(src="js/main.js")
+    block script

@@ -1,0 +1,96 @@
+extends ../layout/main
+
+block variables 
+  - const title = 'Main page'
+  -
+    const infoItems = [
+      { name: "Тип", value: "Дрель ударная" },
+      { name: "Бренд", value: "Bosch" },
+      { name: "Страна-изготовитель", value: "Венгрия" },
+      { name: "Макс. мощность, Вт", value: "701" },
+      { name: "Питание", value: "От сети 220В" },
+      { name: "Гарантия", value: "2 года" },
+      { name: "Питание", value: "От сети 220В" },
+      { name: "Упаковка", value: "Пластиковый кейс" },
+    ]
+
+block content 
+  .tile 
+    .container
+      .tile__inner
+        .tile__row 
+          .tile__items
+            .tile__item-left
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-lightgraygray
+                  p Электроника
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-lightgraygray
+                  p Бытовая техника
+              .tile__item.w-100
+                a(href="#").tile__item-link.bg-lightgraygray
+                  p Детские товары
+            .tile__item-right
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-pink
+                  p Подарочные наборы
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-blue
+                  p Последний шанс!
+        .tile__row.tile__row--top.big-block
+          .tile__items
+            .tile__item-left.w-66
+              .tile__item
+                .tile__item-inner.tile__item-inner--text.bg-lightgray
+                  p.
+                    Выберите товар с повышенным кэшбэком
+                    Нажмите кнопку «Посмотреть» - перейдите в<br> карточку товара<br>
+                    Положите товар в корзину<br>
+                    Оформите заказ
+            .tile__item-right.w-33
+              .tile__item
+                a(href="#").tile__item-link.bg-lightgray
+                  p Кэшбэк 30%
+              .tile__item
+                a(href="#").tile__item-link.bg-lightgray
+                  p Успей купить!
+        .tile__row.tile__row--desktop.big-block
+          .tile__items.tile__items--reverse
+            .tile__item-left.w-66
+              .tile__item
+                .tile__item-inner.tile__item-inner--text.bg-lightgreen
+                  ul.tile__item-info.info-item
+                    each item in infoItems 
+                      li.info-item__row
+                        span.info-item__row-name 
+                          b= item.name
+                        span.info-item__row-dotted 
+                        span.info-item__row-value= item.value
+
+            .tile__item-right.w-33
+              .tile__item
+                a(href="#").tile__item-link.bg-lightgreen
+                  p Понятие модернизации понимает механизм власти
+              .tile__item
+                a(href="#").tile__item-link.text-white.bg-image
+                  img(src="images/small.jpg", alt="time to wash")
+                  p Время мыть!
+        .tile__row 
+          .tile__items.tile__items--reverse
+            .tile__item-left
+              .tile__item.w-100
+                a(href="#").tile__item-link.bg-yellow
+                  p Будь первым!
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-yellow
+                  p Супер цены
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-red
+                  p Выгодные предложения
+            .tile__item-right
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-yellow
+                  p Удивительное рядом
+              .tile__item.w-50
+                a(href="#").tile__item-link.bg-lightblue
+                  p Невероятный гений

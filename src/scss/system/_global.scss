@@ -1,0 +1,39 @@
+body {
+  position: relative;
+  min-width: 320px;
+  font-family: "OpenSans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: $line-height;
+  background-color: $bg-color;
+  color: $text-color;
+  &.lock {
+    .wrapper {
+      overflow-y: hidden;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+.container {
+  max-width: 798px;
+  margin: 0 auto;
+
+  @media (min-width: $xs) {
+    padding: 0 15px;
+  }
+}
